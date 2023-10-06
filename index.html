@@ -13,19 +13,22 @@
 
     function playRound(playerSelection, computerSelection) {
         // Converts player input lowercase to make a function case insensitive
-        playerSelection = playerSelection.toLowerCase()
+        playerSelection = playerSelection.convertToUsualCase()
 
-        if ((playerSelection === 'rock' && computerSelection === 'Scissors') || (playerSelection === 'paper' && computerSelection === 'Rock') 
-        || (playerSelection === 'scissors' && computerSelection === 'Paper')) {
-            playerSelection = playerSelection.replace(playerSelection.charAt(0), playerSelection.charAt(0).toUpperCase())
+        if ((playerSelection === 'Rock' && computerSelection === 'Scissors') || (playerSelection === 'Paper' && computerSelection === 'Rock') 
+        || (playerSelection === 'Scissors' && computerSelection === 'Paper')) {
             return `You Win! ${playerSelection} beats ${computerSelection}`
-        } else if ((playerSelection === 'paper' && computerSelection === 'Scissors') || (playerSelection === 'scissors' && computerSelection === 'Rock') 
-        || (playerSelection === 'rock' && computerSelection === 'Paper')) {
-            playerSelection = playerSelection.replace(playerSelection.charAt(0), playerSelection.charAt(0).toUpperCase())
+        } else if ((playerSelection === 'Paper' && computerSelection === 'Scissors') || (playerSelection === 'Scissors' && computerSelection === 'Rock') 
+        || (playerSelection === 'Rock' && computerSelection === 'Paper')) {
             return `You Lose! ${computerSelection} beats ${playerSelection}`
         } else {
-            playerSelection = playerSelection.replace(playerSelection.charAt(0), playerSelection.charAt(0).toUpperCase())
             return `Draw! You had same choice with a computer.`
         }
+    }
+
+    function convertToUsualCase(stringToChange) {
+        stringToChange = stringToChange.toLowerCase()
+        stringToChange = stringToChange.replace(stringToChange.charAt(0), stringToChange.charAt(0).toUpperCase())
+        return stringToChange
     }
 </script>
