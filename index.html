@@ -5,9 +5,19 @@
         if (randomNumber === 0) {
             return 'ROCK'
         } else if (randomNumber === 1) {
-            return 'SCISSOR'
+            return 'SCISSORS'
         } else {
             return 'PAPER'
+        }
+    }
+
+    function playRound(playerSelection, computerSelection) {
+        // Converts player input uppercase to make a function case insensitive
+        playerSelection = playerSelection.toUpperCase()
+
+        if ((playerSelection === 'ROCK' && computerSelection === 'SCISSORS') || (playerSelection === 'PAPER' && computerSelection === 'ROCK') 
+        || (playerSelection === 'SCISSORS' && computerSelection === 'PAPER')) {
+            return `You Win! ${playerSelection} beats ${computerSelection}`
         }
     }
 </script>
