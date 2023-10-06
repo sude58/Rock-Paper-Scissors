@@ -14,15 +14,17 @@
     function playRound(playerSelection, computerSelection) {
         // Converts player input lowercase to make a function case insensitive
         playerSelection = playerSelection.convertToUsualCase()
-
+        
+        // Evaluate result of game.
+        // 1 for player win, -1 for computer win, 0 for draw or error
         if ((playerSelection === 'Rock' && computerSelection === 'Scissors') || (playerSelection === 'Paper' && computerSelection === 'Rock') 
         || (playerSelection === 'Scissors' && computerSelection === 'Paper')) {
-            return `You Win! ${playerSelection} beats ${computerSelection}`
+            return 1
         } else if ((playerSelection === 'Paper' && computerSelection === 'Scissors') || (playerSelection === 'Scissors' && computerSelection === 'Rock') 
         || (playerSelection === 'Rock' && computerSelection === 'Paper')) {
-            return `You Lose! ${computerSelection} beats ${playerSelection}`
+            return -1
         } else {
-            return `Draw! You had same choice with a computer.`
+            return 0
         }
     }
 
@@ -31,4 +33,26 @@
         stringToChange = stringToChange.replace(stringToChange.charAt(0), stringToChange.charAt(0).toUpperCase())
         return stringToChange
     }
+
+    function game() {
+        let playerScore = 0
+        let computerScore = 0
+        for (let i = 0; i < 5; i++) {
+            let playerChoice = prompt("Please enter Rock, Paper, or Scissors: ")
+            playerChoice = convertToUsualCase(playerChoice)
+            let computerChoice = getComputerChoice()
+            let result = playRound(playerChoice, computerChoice)
+            if (result === 1) {
+                console.log(`You Win! ${playerChoice} beats ${computerChoice}`)
+                playerScore++
+            } else if (result === -1) {
+                console.log(`You Lose! ${computerChoice} beats ${playerChoice}`)
+                computerScore++
+            } else {
+                console.log(`Draw! You had same choice with a computer.`)    
+            }
+        }
+    }
+
+    game()
 </script>
