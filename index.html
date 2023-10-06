@@ -37,6 +37,7 @@
     function game() {
         let playerScore = 0
         let computerScore = 0
+        // executes 5 rounds
         for (let i = 0; i < 5; i++) {
             let playerChoice = prompt("Please enter Rock, Paper, or Scissors: ")
             playerChoice = convertToUsualCase(playerChoice)
@@ -51,6 +52,15 @@
             } else {
                 console.log(`Draw! You had same choice with a computer.`)    
             }
+        }
+
+        // Displays winner and their score
+        if (playerScore > computerScore) {
+            console.log(`You're the Winner! Scored ${playerScore}`)
+        } else if (playerScore < computerScore) {
+            console.log(`Computer is the Winner! Scored ${computerScore}`)
+        } else {
+            console.log(`No winner for this game!`)
         }
     }
 
