@@ -3,21 +3,29 @@
         randomNumber = Math.floor(Math.random() * 3)
         
         if (randomNumber === 0) {
-            return 'ROCK'
+            return 'Rock'
         } else if (randomNumber === 1) {
-            return 'SCISSORS'
+            return 'Scissors'
         } else {
-            return 'PAPER'
+            return 'Paper'
         }
     }
 
     function playRound(playerSelection, computerSelection) {
-        // Converts player input uppercase to make a function case insensitive
-        playerSelection = playerSelection.toUpperCase()
+        // Converts player input lowercase to make a function case insensitive
+        playerSelection = playerSelection.toLowerCase()
 
-        if ((playerSelection === 'ROCK' && computerSelection === 'SCISSORS') || (playerSelection === 'PAPER' && computerSelection === 'ROCK') 
-        || (playerSelection === 'SCISSORS' && computerSelection === 'PAPER')) {
+        if ((playerSelection === 'rock' && computerSelection === 'Scissors') || (playerSelection === 'paper' && computerSelection === 'Rock') 
+        || (playerSelection === 'scissors' && computerSelection === 'Paper')) {
+            playerSelection = playerSelection.replace(playerSelection.charAt(0), playerSelection.charAt(0).toUpperCase())
             return `You Win! ${playerSelection} beats ${computerSelection}`
+        } else if ((playerSelection === 'paper' && computerSelection === 'Scissors') || (playerSelection === 'scissors' && computerSelection === 'Rock') 
+        || (playerSelection === 'rock' && computerSelection === 'Paper')) {
+            playerSelection = playerSelection.replace(playerSelection.charAt(0), playerSelection.charAt(0).toUpperCase())
+            return `You Lose! ${computerSelection} beats ${playerSelection}`
+        } else {
+            playerSelection = playerSelection.replace(playerSelection.charAt(0), playerSelection.charAt(0).toUpperCase())
+            return `Draw! You had same choice with a computer.`
         }
     }
 </script>
